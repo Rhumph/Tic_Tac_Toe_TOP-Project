@@ -1,45 +1,90 @@
 const playGame = function () {
 
-    const gameTiles = [];
+    const gameBoard = function () {
+        let gameTiles = [];
 
-    const createPlayer = function (name, inputVariable) {
+        const getGameTiles = function () {
+            console.log("hit it")
+            return gameTiles;
+        };
 
-        return { name, inputVariable }
-    };
+        const createGameTiles = function (numberOfTiles) {
+            for (let index = 0; index < numberOfTiles; index++) {
+                const newTile = createGameTile();
+                newTile.setTileIndex(index);
+                gameTiles.push(newTile);
+            }
+            return
+        };
 
-    const mae = createPlayer("mae", "E");
-
-    const createGameTile = function () {
-
-        // Game tiles will take a players inputVariable
-        // Game tiles will need logic to know if it's 3 in a row
-
-        const tileVariable = function () {
+        const createGameTile = function () {
 
             let currentTilevariable = "";
+            let tileIndex = 0;
 
             const setTileVariable = function (inputVariable) {
                 currentTilevariable = inputVariable;
             };
 
-            const getTileVariable  = function (){ 
-                return (currentTilevariable)
+            const getTileVariable = function () {
+                return currentTilevariable;
             };
 
-            return {currentTilevariable, setTileVariable, getTileVariable};
+            const setTileIndex = function (index) {
+                tileIndex = index;
+            };
 
+            const getTileIndex = function () {
+                return tileIndex;
+            };
+
+            const alterGameTile = function () { };
+
+            return {
+                currentTilevariable,
+                setTileVariable,
+                getTileVariable,
+                setTileIndex,
+                getTileIndex,
+                createGameTile,
+                createGameTiles,
+                alterGameTile
+            };
         }
-
+        return { getGameTiles, createGameTiles, createGameTile };
     };
 
-    const createGameTiles = function (numberOfTiles) { 
-        for (let index = 0; index < numberOfTiles; index++) {
-            gameTiles.push(createGameTile);
-            
-        }
+    const player = function () {
+
+        const createPlayer = function (name, inputVariable) {
+            return { name, inputVariable };
+        };
+        
+        return {createPlayer}
+    };
+
+    const game = function () { 
+        
     }
 
-    const startGame = createGameTiles(9);
 
-    console.log(gameTiles.length)
-}();
+
+
+    const mae = player().createPlayer("mae", "E");
+
+    console.log(mae)
+
+    let currentGame = gameBoard()
+
+    currentGame.createGameTiles(9);
+
+    console.log(currentGame)
+
+    const gameTiles = currentGame.getGameTiles();
+
+    gameTiles.forEach((tile) => {
+        console.log(tile.getTileIndex());
+    });
+};
+
+playGame();
