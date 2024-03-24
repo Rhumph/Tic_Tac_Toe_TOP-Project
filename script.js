@@ -4,7 +4,7 @@ const playGame = function () {
         let gameTiles = [];
 
         const getGameTiles = function () {
-            console.log("hit it")
+            
             return gameTiles;
         };
 
@@ -59,32 +59,52 @@ const playGame = function () {
         const createPlayer = function (name, inputVariable) {
             return { name, inputVariable };
         };
-        
-        return {createPlayer}
+
+        return { createPlayer }
     };
 
-    const game = function () { 
+    const game = function (player1, player2) {
+
+        let currentPlayerTurn = player1;
+
+        function switchTurn() {
+            currentPlayerTurn = currentPlayerTurn === player1 ? player2 : player1;
+            return currentPlayerTurn
+        }
+
+        function getPlayerTurn () { 
+            return currentPlayerTurn;
+        }
+
+        // Need to make something that checks for a win state at the end of each turn
         
+
+        // Need to make soemthing that defines a win state
+
+        // Need to make something that takes the player's click and put's the players variable on the tile  
+
+        return {switchTurn, getPlayerTurn}
     }
 
 
 
 
-    const mae = player().createPlayer("mae", "E");
-
-    console.log(mae)
+    const mae = player().createPlayer("Mae", "M");
+    const yennifer = player().createPlayer("Yennifer", "Y");
 
     let currentGame = gameBoard()
 
     currentGame.createGameTiles(9);
 
-    console.log(currentGame)
-
     const gameTiles = currentGame.getGameTiles();
 
-    gameTiles.forEach((tile) => {
-        console.log(tile.getTileIndex());
-    });
+    const playerTurn = game(mae, yennifer);
+
+    playerTurn.switchTurn();
+
+    // gameTiles.forEach((tile) => {
+    //     console.log(tile.getTileIndex());
+    // });
 };
 
 playGame();
