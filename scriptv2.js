@@ -12,12 +12,12 @@ const startGame = function () {
     const player1 = function (name) {
         const p1Name = name;
         // const p1x = x;
-        const TileArray = [3,4,5];
+        const TileArray = [];
         // const player1Choice = ph;
         return { p1Name, TileArray};
     }
 
-    // Object two, Player 1
+    // Object two, Player 2
 
     const player2 = function (name) {
         const p2Name = name;
@@ -37,24 +37,18 @@ const startGame = function () {
         // Start game in a Non-Won state condition
         let aPlayerWon = false
 
-        if (aPlayerWon != true) {
+        while (aPlayerWon != true) {
             let playerInput;
             if (playerTurn == player1) {
                 playerInput = "X";
             } else { playerInput = "O"; };
 
             // Logic to get a players selection (Don't know if this should be in player object)
-            let playerTileChoice = parseInt(prompt("Pick a tile"))
-
-            // console.log(playerInput)
-            // console.log(playerTileChoice)
-            // console.log(gb.gameTiles)
-
-            // console.log(isNaN(playerTileChoice))
+            // let playerTileChoice = parseInt(prompt("Pick a tile"))
 
             // Logic to check if a game tile is empty, or otherwise 'pick again'
             if (gb.gameTiles[playerTileChoice] === "") {
-                // console.log("empty tile check reached")
+                
                 // Put a players mark on it if it is
                 gb.gameTiles[playerTileChoice] = playerInput.toString();
 
@@ -67,40 +61,54 @@ const startGame = function () {
             // Logic to check if the players array of tiles has a winnign combination
             let checkForWin = function (player1, player2) {
                 const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-                console.log('chkforw has printed')
                 winningCombos.forEach(combo => {
                     let set1 = new Set(combo)
                     let set2 = new Set(p1.TileArray)
+                    let winScore = 0;
 
                     for (let item of set1) {
-                        let winScore = 0;
-                        console.log(item)
-                        // console.log(winScore)
+                        
                         if (set2.has(item)) {
                             winScore++;
-                            console.log('player 1 won')
-                            console.log(set2)
+                            // console.log(set2)
+                            // console.log(winScore)
                         }
                         if (winScore === 3){ 
+                            console.log('player 1 won')
                             aPlayerWon = true;
+                            break;
                         }
-                        break;
+                        
                     }
                 });
 
-                // winningCombos.forEach(combo => {
-                //     let set1 = new Set(combo)
-                //     let set2 = new Set(p2.TileArray)
+                winningCombos.forEach(combo => {    
+                    let set1 = new Set(combo)
+                    let set2 = new Set(p2.TileArray)
+                    let winScore = 0;
 
-                //     for (let item of set1) {
-                //         if (set2.has(item)) {
-                //             aPlayerWon = true;                            
-                //         }
-                //     }
-                // });
+                    for (let item of set1) {
+                        
+                        if (set2.has(item)) {
+                            winScore++;                            
+                            // console.log(set2)
+                        }
+                        if (winScore === 3){ 
+                            console.log('player 2 won')
+                            aPlayerWon = true;
+                            break;
+                        }                       
+                    }
+                });
             }
 
             checkForWin();
+
+            // Switch turn logic
+            playerTurn = playerTurn === p1 ? p2 : p1;
+
+            console.log(p1.TileArray)
+            console.log(p2.TileArray)
         }
     }
 
@@ -112,10 +120,6 @@ let GB = sGV.gameBoard();
 let p1 = sGV.player1('Suzie');
 let p2 = sGV.player2('Mae');
 let playGame = sGV.gameLogic(GB, p1, p2);
-
-// console.log(p1.p1Name, p1.TileArray)
-// console.log(p2.p2Name, p2.TileArray)
-// console.log(GB.gameTiles)
 
 
 
