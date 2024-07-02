@@ -21,7 +21,7 @@ body {
     display: flex;
     height: 97vh;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     text-align: center;
     grid-column: 1/1;
     border-radius: 25px;
@@ -40,22 +40,41 @@ body {
 }
 
 #game-table { 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    display: flex;
+    /* grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr; */
     background-color: black;
-    border-radius: 5px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .table-button { 
     background-color: beige;
     border-color: transparent;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    margin: 6px;
+    margin: 3px;
     padding: 15px;
     font-size: 60px;
     text-align: center;
     min-width: 150px;
     min-height: 150px;
     border-radius: 5px;
+}
+
+#game-reset-button { 
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.name-field { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-name-input { 
+    font-size: 40px;
+    width: 300px;
+    margin: 15px;
 }

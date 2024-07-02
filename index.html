@@ -14,22 +14,53 @@
 
         <div id="side-bar">
             <h1>Welcome to my Naughts & Crosses (Tic-Tac-Toe) game!<h1>
-                    <p>I'll put a running scorecard thing here eventually</p>
+                    <div class="name-field">
+                        <input type="text" name="Player 1 name input" id="p1-name-input" class="player-name-input" placeholder="Player 1 Name">
+                        <input type="text" name="Player 2 name input" id="p2-name-input" class="player-name-input"
+                        placeholder="Player 2 Name">
+                    </div>
         </div>
 
         <div id="main-body">
             <h1>Let's Play a Game!</h1>
-            <div id="game-table">
-                <button id="btn1" class="table-button"></button>
-                <button id="btn2" class="table-button"></button>
-                <button id="btn3" class="table-button"></button>
-                <button id="btn4" class="table-button"></button>
-                <button id="btn5" class="table-button"></button>
-                <button id="btn6" class="table-button"></button>
-                <button id="btn7" class="table-button"></button>
-                <button id="btn8" class="table-button"></button>
-                <button id="btn9" class="table-button"></button>
-            </div>
+            <table id="game-table">
+                <tbody>
+                    <tr>
+                        <td data-tile-index="0">
+                            <button class="table-button"></button>
+                        </td>
+                        <td data-tile-index="1">
+                            <button class="table-button"></button>
+                        </td>
+                        <td data-tile-index="2">
+                            <button class="table-button"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-tile-index="3">
+                            <button class="table-button"></button>
+                        </td>
+                        <td data-tile-index="4">
+                            <button class="table-button"></button>
+                        </td>
+                        <td data-tile-index="5">
+                            <button class="table-button"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-tile-index="6">
+                            <button class="table-button"></button>
+                        </td>
+                        <td data-tile-index="7">
+                            <button class="table-button"></button>
+                        </td>
+                        <td data-tile-index="8">
+                            <button class="table-button"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="game-reset-button">Reset (not finished)</button>
         </div>
 
     </div>
